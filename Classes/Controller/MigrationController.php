@@ -110,7 +110,6 @@ class MigrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
     public function processMirgrateAction(){
         $arguments = $this->request->getArguments();
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($arguments['migrategeneral']['elements'],__FILE__.''.__LINE__);
         $migrateAllElements = $this->migrationRepository->updateAllElements($arguments['migrategeneral']['elements']);
         $this->view->assignMultiple(
             array(
