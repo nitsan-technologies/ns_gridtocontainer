@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ns_gridtocontainer/Resources/Private/Language/locallang.xlf" date="2023-01-03T11:24:06Z" product-name="ns_gridtocontainer">
+		<header/>
+		<body>
+			<trans-unit id="tx_nsgridtocontainer_domain_model_migration" resname="tx_nsgridtocontainer_domain_model_migration">
+				<source>Migration</source>
+			</trans-unit>
+			<trans-unit id="migrate.note">
+				<source>Are you sure you want to migrate grid to container</source>
+			</trans-unit>
+			<trans-unit id="migrate.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="migrate.no">
+				<source>No</source>
+			</trans-unit>	
+			<trans-unit id="migrate.notFind">
+				<source>Not find any Grid Elements to Migrate</source>
+			</trans-unit>		
+			<trans-unit id="migrate.notFindCType">
+				<source>Not find CType of Container</source>
+			</trans-unit>								
+			<trans-unit id="migrate.success">
+				<source>Successfully Mirgrated</source>
+			</trans-unit>											
+			<trans-unit id="mirgration_module.title" resname="mirgration_module.title">
+				<source>NS Mirgration</source>
+			</trans-unit>	
+			<trans-unit id="migrate.actionMenu.2">
+				<source>Migration from gridelements layout key</source>
+			</trans-unit>
+			<trans-unit id="migrate.actionMenu.1">
+				<source>Migration of all grids</source>
+			</trans-unit>								
+			<trans-unit id="migrate.submit.migrate">
+				<source>Migrate</source>
+			</trans-unit>
+			<trans-unit id="migrate.analyse.grid.siteid.label">
+				<source>For example on site with id:</source>
+			</trans-unit>
+			<trans-unit id="migrate.all.columns">
+				<source>Column id/s</source>
+			</trans-unit>
+			<trans-unit id="migrate.analyse.grid.label">
+				<source>Gridelement-Layout element:</source>
+			</trans-unit>
+			<trans-unit id="migrate.oldcolumn">
+				<source>Old column-ID:</source>
+			</trans-unit>
+			<trans-unit id="migrate.newcolumn">
+				<source>New column-ID:</source>
+			</trans-unit>
+			<trans-unit id="migrate.samecolumn">
+				<source>Same column-ID</source>
+			</trans-unit>									
+			<trans-unit id="migrate.newcontainerid">
+				<source>New EXT:container element-identifier e.g. ce_columns2</source>
+			</trans-unit>			
+
+		</body>
+	</file>
+</xliff>

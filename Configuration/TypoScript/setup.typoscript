@@ -1,0 +1,12 @@
+
+# Module configuration
+module.tx_nsgridtocontainer_nitsan_nsgridtocontainermigration {
+    view {
+        templateRootPaths.0 = EXT:ns_gridtocontainer/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_nsgridtocontainer_migration.view.templateRootPath}
+        partialRootPaths.0 = EXT:ns_gridtocontainer/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_nsgridtocontainer_migration.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ns_gridtocontainer/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_nsgridtocontainer_migration.view.layoutRootPath}
+    }
+}
