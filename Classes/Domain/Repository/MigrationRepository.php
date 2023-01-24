@@ -72,12 +72,7 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     
             while ($record = $statement->fetchAll()) {
                 foreach ($record as $key => $value) {
-                    if($value['tx_gridelements_columns'] == '1'){
-                        $colPos = $value['tx_gridelements_columns'] + 200;
-                    }
-                    else{
-                        $colPos = $value['tx_gridelements_columns'] + 100;
-                    }
+                    $colPos = $value['tx_gridelements_columns'] + 100;
                     $queryBuilder = $connection->createQueryBuilder();
                     $queryBuilder->update('tt_content')
                         ->where(

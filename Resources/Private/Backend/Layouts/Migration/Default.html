@@ -1,8 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:be.container pageTitle="{f:translate(key: 'pagetitle')}" includeRequireJsModules="{0:'TYPO3/CMS/NsFeedback/Main'}">
-	<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Vendor/bootstrap4.3.1.min.css', extensionName: 'ns_basetheme')}" media="all">
-	<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/Module/global.css', extensionName: 'ns_basetheme')}" media="all">
-	<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/Module/main.css', extensionName: 'ns_basetheme')}" media="all">
+<f:be.container pageTitle="{f:translate(key: 'pagetitle')}" includeRequireJsModules="{0:'TYPO3/CMS/NsGridtocontainer/Main'}">
+
+
+    <!-- Due to css-order rendering issue ignoring "includeCssFiles" -->
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Vendor/bootstrap4.3.1.min.css', extensionName: 'ns_gridtocontainer')}" media="all">
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'css/Module/global.css', extensionName: 'ns_gridtocontainer')}" media="all">
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'css/Module/main.css', extensionName: 'ns_gridtocontainer')}" media="all">
 	<div class="typo3-fullDoc">
 		<div id="typo3-docbody">
 			<div id="typo3-inner-docbody" style="padding: 24px;margin-top: 0;transition: border .2s ease;">
@@ -17,5 +20,7 @@
 			</div>
 		</div>
 	</div>
+
 </f:be.container>
+
 </html>

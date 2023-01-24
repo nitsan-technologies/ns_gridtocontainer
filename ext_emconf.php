@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Migration Gridelements to Container',
+    'title' => '[NITSAN] Migration Gridelements to Container',
     'description' => 'This Extension is use for who want to switch from EXT:gridelements to EXT:container.',
     'category' => 'plugin',
     'author' => 'Team NITSAN',
