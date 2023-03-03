@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => '[NITSAN] Migration Gridelements to Container',
-    'description' => 'This Extension is use for who want to switch from EXT:gridelements to EXT:container.',
+    'title' => '[NITSAN] Migrate Gridelements to Container',
+    'description' => 'Easily migrate from EXT:gridelements to EXT:container; Get premium support at https://t3planet.com/typo3-gridelements-container',
     'category' => 'plugin',
 	'author' => 'T3: Jay Bhalgamiya, QA: Krishna Dhapa',
 	'author_email' => 'sanjay@nitsan.in',
