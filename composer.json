@@ -1,11 +1,11 @@
 {
     "name": "nitsan/ns-gridtocontainer",
     "type": "typo3-cms-extension",
-    "description": "This Extension is use forse who want to switch from EXT:gridelements to EXT:container.",
+    "description": "Easily migrate from EXT:gridelements to EXT:container; Get premium support at https://t3planet.com/typo3-gridelements-container",
     "authors": [],
     "license": "GPL-2.0-or-later",
     "require": {
-        "typo3/cms-core": "^11.5"
+        "typo3/cms-core": "^10 || ^11"
     },
     "require-dev": {
         "typo3/testing-framework": "^6.9.0"
