@@ -1,7 +1,7 @@
 {
     "name": "nitsan/ns-gridtocontainer",
     "type": "typo3-cms-extension",
-    "description": "Easily migrate from EXT:gridelements to EXT:container; Get premium support at https://t3planet.com/typo3-gridelements-container",
+    "description": "Are you tired of waiting for a public version of Gridelements for the current TYPO3 version? With EXT:container, there's a public solution available for creating grids and containers in TYPO3. We've developed a developer-friendly TYPO3 extension called EXT:ns_gridtocontainer to help you migrate from EXT:gridelements to this new extension. By using our TYPO3 extension, you can easily migrate and save yourself time and effort. *** Live-Demo: https://demo.t3planet.com/t3-extensions/typo3-gridelements-container *** Documentation & Free Support: https://t3planet.com/typo3-gridelements-container",
     "authors": [],
     "license": "GPL-2.0-or-later",
     "require": {
