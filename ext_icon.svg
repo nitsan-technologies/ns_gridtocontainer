@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64.26" height="64.26" viewBox="0 0 64.26 64.26"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="ns_feedback"><rect width="64.26" height="64.26" style="fill:#e55217"/><polygon points="27.05 26.01 32.53 14.2 38.57 25.73 51.49 27.29 42.39 36.59 44.9 49.37 33.24 43.59 21.87 49.93 23.76 37.05 14.22 28.19 27.05 26.01" style="fill:#fff"/></g></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 84 84">
+    <defs>
+        <style>.cls-1{fill:#6eaef9;}.cls-2{opacity:0.3;}.cls-3{fill:#fff;}</style>
+    </defs>
+    <rect class="cls-1" x="-0.27" width="84.54" height="84"></rect>
+    <g class="cls-2">
+        <rect class="cls-3" x="33.08" y="11.48" width="17.5" height="61.03"></rect>
+        <rect class="cls-3" x="10.96" y="11.48" width="17.5" height="61.03"></rect>
+        <rect class="cls-3" x="55.21" y="11.48" width="17.5" height="61.03"></rect>
+    </g>
+    <path class="cls-3" d="M70.73,13.13V26.58H13.27V13.13H70.73m2-2H11.29V28.55H72.71V11.16Z"></path>
+    <path class="cls-3" d="M11.29,33.14V52.06H50.67V33.14ZM48.58,50H13.38V35.24h35.2Z"></path>
+    <path class="cls-3" d="M11.29,54.57V72.19H50.67V54.57ZM48.58,70.09H13.38V56.67h35.2Z"></path>
+    <path class="cls-3" d="M55.21,33.14V52.06h17.6V33.14ZM70.71,50H57.3V35.24H70.71Z"></path>
+    <path class="cls-3" d="M55.21,54.57V72.19h17.6V54.57Zm15.5,15.52H57.3V56.67H70.71Z"></path>
+</svg>
