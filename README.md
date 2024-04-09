@@ -1,5 +1,6 @@
-# ns_gridtocontainer
+# Gridelements to Container
 
-- Product: https://t3planet.com/typo3-gridelements-container
-- Get Installation Support: https://t3planet.com/typo3-gridelements-container
-- Get Premium Support: https://t3planet.com/contact
+- Live Frontend Demo: https://demo.t3planet.com/t3-extensions/typo3-gridelements-container
+- Free version: https://extensions.typo3.org/extension/ns_gridtocontainer
+- Documentation: https://docs.t3planet.com/en/latest/ExtNsGridtoContainer/Index.html
+- Changelog - https://t3planet.com/typo3-gridelements-container
