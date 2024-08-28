@@ -24,8 +24,7 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     public function getGrids()
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        $queryBuilder = $this->getQueryBuilder('tt_content');
         $elementCount = $queryBuilder->count('uid')
             ->from('tt_content')
             ->where(
@@ -36,8 +35,7 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
     public function getGridsV12()
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        $queryBuilder = $this->getQueryBuilder('tt_content');
         $elementCount = $queryBuilder->count('uid')
             ->from('tt_content')
             ->where(
@@ -76,7 +74,6 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $queryBuilder->execute();
             }
             $queryBuilder = $connection->createQueryBuilder();
-            $queryBuilder->getRestrictions()->removeAll();
             $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
             $statement = $queryBuilder->select('uid', 'tx_gridelements_columns', 'tx_gridelements_container')
                 ->from('tt_content')
@@ -107,14 +104,10 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return true;
     }
 
-    /**
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     */
-    public function findGridelements()
+     public function findGridelements()
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-        $queryBuilder->getRestrictions()->removeAll();
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        $queryBuilder = $this->getQueryBuilder('tt_content',1);
+
         $results = $queryBuilder
             ->select('*')
             ->from('tt_content')
@@ -129,8 +122,7 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     public function findContentfromGridElements($id)
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        $queryBuilder = $this->getQueryBuilder('tt_content');
 
         $results = $queryBuilder
             ->select('*')
@@ -143,15 +135,9 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $results;
     }
 
-
-    /**
-      * @param $elementsArray
-      * @return bool
-      */
     public function updateAllElements($elementsArray)
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        $queryBuilder = $this->getQueryBuilder('tt_content');
 
         foreach ($elementsArray as $key => $element) {
             if ($elementsArray[$key]['active'] == 1) {
@@ -178,8 +164,7 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 if ($key2 == 'contentelements') {
                     foreach ($results[$key2] as $element) {
 
-                        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-                        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+                        $queryBuilder = $this->getQueryBuilder('tt_content');
 
                         // Find Content Elements uids in a Grid
                         $contentElements = $queryBuilder
@@ -208,8 +193,7 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
                                 $colPos = $element['tx_gridelements_columns'] + 100;
 
-                                $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-                                $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+                                $queryBuilder = $this->getQueryBuilder('tt_content');
 
                                 $queryBuilder->update('tt_content')
                                 ->where(
@@ -231,8 +215,7 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        $queryBuilder = $this->getQueryBuilder('tt_content');
 
         foreach ($elementsArray as $results) {
             foreach ($results as $key => $elements) {
@@ -255,4 +238,16 @@ class MigrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         return true;
     }
+
+    public static function getQueryBuilder(string $tableName, $removeAll = 0)
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tableName);
+        if ( $removeAll == 1){
+            $queryBuilder->getRestrictions()->removeAll();
+        }
+        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+
+        return $queryBuilder;
+    }
+
 }

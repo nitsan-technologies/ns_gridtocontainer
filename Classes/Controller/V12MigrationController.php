@@ -29,9 +29,9 @@ class V12MigrationController extends ActionController
     /**
      * migrationRepository
      *
-     * @var MigrationRepository
+     * @var ?MigrationRepository
      */
-    protected $migrationRepository = null;
+    protected ?MigrationRepository $migrationRepository;
 
     /**
      * @param MigrationRepository $migrationRepository
@@ -55,9 +55,7 @@ class V12MigrationController extends ActionController
         }
 
         $assign['version'] = 12;
-        $view = $this->initializeModuleTemplate($this->request);
-        $view->assignMultiple($assign);
-        return $view->renderResponse();
+        return $this->getViewAndTemplate($this->request, $assign, 'Dashboard');
     }
 
     public function executeMigrationAction(): ResponseInterface
@@ -79,10 +77,8 @@ class V12MigrationController extends ActionController
             ];
 
         }
-
-        $view = $this->initializeModuleTemplate($this->request);
-        $view->assignMultiple($assign);
-        return $view->renderResponse();
+        $assign['version'] = 12;
+        return $this->getViewAndTemplate($this->request, $assign, 'ExecuteMigration');
     }
 
     public function specificGridMigrateAction(): ResponseInterface
@@ -117,9 +113,7 @@ class V12MigrationController extends ActionController
         }
 
         $assign['version'] = 12;
-        $view = $this->initializeModuleTemplate($this->request);
-        $view->assignMultiple($assign);
-        return $view->renderResponse();
+        return $this->getViewAndTemplate($this->request, $assign, 'SpecificGridMigrate');
     }
 
     public function processMirgrateAction(): ResponseInterface
@@ -132,13 +126,18 @@ class V12MigrationController extends ActionController
         ];
 
         $assign['version'] = 12;
-        $view = $this->initializeModuleTemplate($this->request);
-        $view->assignMultiple($assign);
-        return $view->renderResponse();
+        return $this->getViewAndTemplate($this->request, $assign, 'ProcessMirgrate');
     }
+
+    protected function getViewAndTemplate(ServerRequestInterface $request, array $assign, string $action): ResponseInterface
+    {
+        $view = $this->initializeModuleTemplate($request);
+        $view->assignMultiple($assign);
+        return $view->renderResponse('Migration/' . $action);
+    }
+
     protected function initializeModuleTemplate(ServerRequestInterface $request): ModuleTemplate
     {
-        $moduleTemplateFactory = GeneralUtility::makeInstance(ModuleTemplateFactory::class);
-        return $moduleTemplateFactory->create($request);
+        return GeneralUtility::makeInstance(ModuleTemplateFactory::class)->create($request);
     }
 }
