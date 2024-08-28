@@ -92,3 +92,8 @@ hr{
     border-color: #228B22;
     box-shadow: 0 0 1px 1px #228B22;
 }
+
+.typo3-fullDoc {
+    overflow-y: auto;
+    height: 100%;
+}

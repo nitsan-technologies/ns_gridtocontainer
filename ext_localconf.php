@@ -1,7 +1,8 @@
 <?php
+
 defined('TYPO3') || die();
 
-(static function() {
+(static function () {
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 
     $iconRegistry->registerIcon(

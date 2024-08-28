@@ -1,0 +1,39 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+	<div class="ns-ext-dashboard-wrap">	
+		<br/><br/>	        
+        <f:if condition="{grid}==''">			
+			<f:then>
+                <f:be.infobox title="{f:translate(key: 'migrate.notFind', extensionName: 'NsGridtocontainer')}" state="-1"></f:be.infobox>
+
+			</f:then>
+            <f:else>
+                <f:form action="processMirgrate" name="migrategeneral" method="POST">
+                    <div class="typo3-TCEforms">
+                        <div class="tab-content">
+                            <f:for each="{gridelementsElements}" as="element">
+                                <fieldset class="form-section">
+                                    <div class="form-group">
+                                        <f:form.checkbox id="layout-{element.tx_gridelements_backend_layout}" property="elements.{element.tx_gridelements_backend_layout}.active" value="1" />
+                                        <label for="layout-{element.tx_gridelements_backend_layout}">{f:translate(key: 'migrate.analyse.grid.label', extensionName: 'NsGridtocontainer')} {element.tx_gridelements_backend_layout}</label>
+                                    </div>
+                                        <div class="form-group">
+                                            <label for="container-name-{element.tx_gridelements_backend_layout}">{f:translate(key: 'migrate.newcontainerid', extensionName: 'NsGridtocontainer')}</label>
+                                            <f:form.textfield class="form-control" id="container-name-{element.tx_gridelements_backend_layout}" property="elements.{element.tx_gridelements_backend_layout}.containername"/>
+                                        </div>
+                                </fieldset>
+                            </f:for>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <f:form.submit  class="btn btn-primary" value="{f:translate(key: 'migrate.submit.migrate', extensionName: 'NsGridtocontainer')}" />
+                </f:form>            
+            </f:else>
+		</f:if>
+	</div>
+</f:section>
+
+</html>

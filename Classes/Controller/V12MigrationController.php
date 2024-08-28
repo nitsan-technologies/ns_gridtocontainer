@@ -4,6 +4,14 @@ declare(strict_types=1);
 
 namespace NITSAN\NsGridtocontainer\Controller;
 
+use NITSAN\NsGridtocontainer\Domain\Repository\MigrationRepository;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+
 /**
  * This file is part of the "Migration of Gridelements to Container" Extension for TYPO3 CMS.
  *
@@ -14,39 +22,47 @@ namespace NITSAN\NsGridtocontainer\Controller;
  */
 
 /**
- * MigrationController
+ * V12MigrationController
  */
-class MigrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class V12MigrationController extends ActionController
 {
     /**
      * migrationRepository
      *
-     * @var \NITSAN\NsGridtocontainer\Domain\Repository\MigrationRepository
+     * @var MigrationRepository
      */
     protected $migrationRepository = null;
 
     /**
-     * @param \NITSAN\NsGridtocontainer\Domain\Repository\MigrationRepository $migrationRepository
+     * @param MigrationRepository $migrationRepository
      */
-    public function injectMigrationRepository(\NITSAN\NsGridtocontainer\Domain\Repository\MigrationRepository $migrationRepository)
-    {
+
+    public function __construct(
+        MigrationRepository $migrationRepository
+    ) {
         $this->migrationRepository = $migrationRepository;
     }
 
-    public function dashboardAction()
+
+    public function dashboardAction(): ResponseInterface
     {
-        $grids = $this->migrationRepository->getGrids();
+        $grids = $this->migrationRepository->getGridsV12();
+        $assign = [];
         if($grids) {
             $assign = [
                 'action' => 'dashboard',
             ];
-            $this->view->assignMultiple($assign);
         }
+
+        $assign['version'] = 12;
+        $view = $this->initializeModuleTemplate($this->request);
+        $view->assignMultiple($assign);
+        return $view->renderResponse();
     }
 
-    public function executeMigrationAction()
+    public function executeMigrationAction(): ResponseInterface
     {
-        $grids = $this->migrationRepository->getGrids();
+        $grids = $this->migrationRepository->getGridsV12();
         $assign = [];
         if($grids) {
             $result = $this->migrationRepository->executeUpdate();
@@ -63,10 +79,13 @@ class MigrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             ];
 
         }
-        $this->view->assignMultiple($assign);
+
+        $view = $this->initializeModuleTemplate($this->request);
+        $view->assignMultiple($assign);
+        return $view->renderResponse();
     }
 
-    public function specificGridMigrateAction()
+    public function specificGridMigrateAction(): ResponseInterface
     {
         $gridelementsElements = $this->migrationRepository->findGridelements();
         if(empty($gridelementsElements)) {
@@ -96,18 +115,30 @@ class MigrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 "grid" => "find",
             ];
         }
-        $this->view->assignMultiple($assign);
+
+        $assign['version'] = 12;
+        $view = $this->initializeModuleTemplate($this->request);
+        $view->assignMultiple($assign);
+        return $view->renderResponse();
     }
 
-    public function processMirgrateAction()
+    public function processMirgrateAction(): ResponseInterface
     {
         $arguments = $this->request->getArguments();
         $migrateAllElements = $this->migrationRepository->updateAllElements($arguments['migrategeneral']['elements']);
-        $this->view->assignMultiple(
-            array(
-                "arguments" => $arguments,
-                "migrateAllElements" => $migrateAllElements
-            )
-        );
+        $assign = [
+            'arguments' => $arguments,
+            'migrateAllElements' => $migrateAllElements,
+        ];
+
+        $assign['version'] = 12;
+        $view = $this->initializeModuleTemplate($this->request);
+        $view->assignMultiple($assign);
+        return $view->renderResponse();
+    }
+    protected function initializeModuleTemplate(ServerRequestInterface $request): ModuleTemplate
+    {
+        $moduleTemplateFactory = GeneralUtility::makeInstance(ModuleTemplateFactory::class);
+        return $moduleTemplateFactory->create($request);
     }
 }
