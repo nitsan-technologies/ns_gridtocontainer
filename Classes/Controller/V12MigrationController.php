@@ -55,7 +55,7 @@ class V12MigrationController extends ActionController
         }
 
         $assign['version'] = 12;
-        return $this->getViewAndTemplate($this->request, $assign, 'Dashboard');
+        return $this->getViewAndTemplate($this->request, $assign);
     }
 
     public function executeMigrationAction(): ResponseInterface
@@ -78,7 +78,7 @@ class V12MigrationController extends ActionController
 
         }
         $assign['version'] = 12;
-        return $this->getViewAndTemplate($this->request, $assign, 'ExecuteMigration');
+        return $this->getViewAndTemplate($this->request, $assign);
     }
 
     public function specificGridMigrateAction(): ResponseInterface
@@ -113,7 +113,7 @@ class V12MigrationController extends ActionController
         }
 
         $assign['version'] = 12;
-        return $this->getViewAndTemplate($this->request, $assign, 'SpecificGridMigrate');
+        return $this->getViewAndTemplate($this->request, $assign);
     }
 
     public function processMirgrateAction(): ResponseInterface
@@ -126,14 +126,14 @@ class V12MigrationController extends ActionController
         ];
 
         $assign['version'] = 12;
-        return $this->getViewAndTemplate($this->request, $assign, 'ProcessMirgrate');
+        return $this->getViewAndTemplate($this->request, $assign);
     }
 
-    protected function getViewAndTemplate(ServerRequestInterface $request, array $assign, string $action): ResponseInterface
+    protected function getViewAndTemplate(ServerRequestInterface $request, array $assign): ResponseInterface
     {
         $view = $this->initializeModuleTemplate($request);
         $view->assignMultiple($assign);
-        return $view->renderResponse('Migration/' . $action);
+        return $view->renderResponse();
     }
 
     protected function initializeModuleTemplate(ServerRequestInterface $request): ModuleTemplate
