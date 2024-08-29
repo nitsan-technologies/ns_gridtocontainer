@@ -25,7 +25,7 @@
 				<source>Successfully Mirgrated</source>
 			</trans-unit>											
 			<trans-unit id="mirgration_module.title" resname="mirgration_module.title">
-				<source>NS Mirgration</source>
+				<source>Mirgration</source>
 			</trans-unit>	
 			<trans-unit id="migrate.actionMenu.2">
 				<source>Migration from gridelements layout key</source>

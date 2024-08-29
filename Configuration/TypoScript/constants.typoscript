@@ -2,10 +2,10 @@
 module.tx_nsgridtocontainer_migration {
     view {
         # cat=module.tx_nsgridtocontainer_migration/file; type=string; label=Path to template root (BE)
-        templateRootPath = EXT:ns_gridtocontainer/Resources/Private/Backend/Templates/
+        templateRootPath = EXT:ns_gridtocontainer/Resources/Private/Templates/
         # cat=module.tx_nsgridtocontainer_migration/file; type=string; label=Path to template partials (BE)
-        partialRootPath = EXT:ns_gridtocontainer/Resources/Private/Backend/Partials/
+        partialRootPath = EXT:ns_gridtocontainer/Resources/Private/Partials/
         # cat=module.tx_nsgridtocontainer_migration/file; type=string; label=Path to template layouts (BE)
-        layoutRootPath = EXT:ns_gridtocontainer/Resources/Private/Backend/Layouts/
+        layoutRootPath = EXT:ns_gridtocontainer/Resources/Private/Layouts/
     }
 }

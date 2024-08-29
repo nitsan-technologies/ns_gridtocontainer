@@ -1,0 +1,19 @@
+<div class="ns-ext-dashboard-wrap">
+    <br/><br/>
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">
+            <f:translate key="migrate.note" extensionName="ns_gridtocontainer"/>
+        </h4>
+        <ul class="navbar-nav">
+            <li class="nav-item {f:if(condition: '{action}==dashboard', then: 'active')}">
+                <f:link.action action="executeMigration" class="nav-link">
+                    <f:translate key="migrate.yes" extensionName="ns_gridtocontainer"/>
+                </f:link.action>
+                <f:link.action action="dashboard" class="nav-link">
+                    <f:translate key="migrate.no" extensionName="ns_gridtocontainer"/>
+                </f:link.action>
+            </li>
+        </ul>
+    </div>
+
+</div>

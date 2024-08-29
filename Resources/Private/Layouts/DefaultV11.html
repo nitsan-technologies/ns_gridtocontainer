@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:ns="http://typo3.org/ns/NITSAN/NsGridtocontainer/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:be.container pageTitle="{f:translate(key: 'pagetitle')}">
+    <!-- Due to css-order rendering issue ignoring "includeCssFiles" -->
+    <link rel="stylesheet" type="text/css"
+          href="{f:uri.resource(path:'Vendor/bootstrap4.3.1.min.css', extensionName: 'ns_gridtocontainer')}"
+          media="all">
+    <link rel="stylesheet" type="text/css"
+          href="{f:uri.resource(path:'css/Module/global.css', extensionName: 'ns_gridtocontainer')}" media="all">
+    <link rel="stylesheet" type="text/css"
+          href="{f:uri.resource(path:'css/Module/main.css', extensionName: 'ns_gridtocontainer')}" media="all">
+    <div class="typo3-fullDoc">
+        <div id="typo3-docbody">
+            <div id="typo3-inner-docbody" style="padding: 24px;margin-top: 0;transition: border .2s ease;">
+                <div class="ns-ext-navigation-wrap">
+                    <a class="navbar-brand ns-ext-name ns-ext-name-desktop" href="javascript:;">
+                        <f:translate key="mirgration_module.title" extensionName="ns_gridtocontainer"/>
+                    </a>
+                </div>
+                <f:be.menus.actionMenu>
+                    <f:be.menus.actionMenuItem label="{f:translate(key: 'migrate.actionMenu.1')}" controller="Migration"
+                                               action="dashboard"/>
+                    <f:be.menus.actionMenuItem label="{f:translate(key: 'migrate.actionMenu.2')}"
+                                               action="specificGridMigrate" controller="Migration"/>
+                </f:be.menus.actionMenu>
+                <f:render section="content"/>
+            </div>
+        </div>
+    </div>
+</f:be.container>
+
+</html>
